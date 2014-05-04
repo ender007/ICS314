@@ -15,24 +15,41 @@ import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
 public class VOR {
-
+	JFrame frame;
 	
-	public VOR(int rad, String fromOrTo, int deflect){
-		JFrame frame = new JFrame("VOR");//frame that contains 'panel'
+	public VOR(int bearing, int vor){
+		frame = new JFrame("VOR");//frame that contains 'panel'
 		JPanel GLpanel = new JPanel();//panel with a grid layout(GL)
 		JPanel BLpanel = new JPanel();//panel with a border layout(BL)
 		Border loweredbevel = BorderFactory.createLoweredBevelBorder();
 		TitledBorder radialTitle;
 		TitledBorder signalTitle;
 		
+		//calling calculations.java to access deflection()
+		calculations calc = new calculations();
+        int deflect = calculations.deflection(bearing, vor);
+        
+        int x = calculations.toFrom(bearing, vor, true);
+        
+        String tf = "";
+        if(x == 0){
+            tf = "BAD";
+        }
+        else if(x == -1){
+            tf = "FROM";
+        }
+        else{
+            tf = "TO";
+        }
+		
 		/*Two main displays that the GUI has:
 		 *the radial label which displays the radial
 		 *the signal label which displays the signal
 		 *the image label which displays an image of the deflected needle
 		 */
-		String strRad = String.valueOf(rad);
+		String strRad = String.valueOf(vor);
 		JLabel radial = new JLabel(strRad);
-		JLabel signal = new JLabel(fromOrTo);
+		JLabel signal = new JLabel(tf);
 		JLabel image = new JLabel();
 		
 		//All the images that will be used, from range -10 to 10
@@ -49,29 +66,34 @@ public class VOR {
 		ImageIcon four = new ImageIcon(this.getClass().getResource("/images/pos4.png"));
 		ImageIcon two = new ImageIcon(this.getClass().getResource("/images/pos2.png"));
 		
+		
+		
+		
 		//checking to see what was entered for deflection and setting image on label
-		if(deflect == 0){
+		if(x == 0){
 			image.setIcon(zero);
-		} else if(deflect == -10){
-			image.setIcon(negTen);
-		} else if(deflect == -8){
-			image.setIcon(negEight);
-		} else if(deflect == -6){
-			image.setIcon(negSix);
-		} else if(deflect == -4){
-			image.setIcon(negFour);
-		} else if(deflect == -2){
-			image.setIcon(negTwo);
-		} else if(deflect == 2){
-			image.setIcon(two);
-		} else if(deflect == 4){
-			image.setIcon(four);
-		} else if(deflect == 6){
-			image.setIcon(six);
-		} else if(deflect == 8){
-			image.setIcon(eight);
-		} else if(deflect == 10){
+		} else if(deflect == 0){
+			image.setIcon(zero);
+		} else if(deflect < -8){
 			image.setIcon(ten);
+		} else if(deflect >= -8 && deflect < -6){
+			image.setIcon(eight);
+		} else if(deflect >= -6 && deflect < -4){
+			image.setIcon(six);
+		} else if(deflect >= -4 && deflect < -2){
+			image.setIcon(four);
+		} else if(deflect >= -2 && deflect < 0){
+			image.setIcon(two);
+		} else if(deflect > 0 && deflect <= 2){
+			image.setIcon(negTwo);
+		} else if(deflect > 2 && deflect <= 4){
+			image.setIcon(negFour);
+		} else if(deflect > 4 && deflect <= 6){
+			image.setIcon(negSix);
+		} else if(deflect > 6 && deflect <= 8){
+			image.setIcon(negEight);
+		} else if(deflect > 8){
+			image.setIcon(negTen);
 		} else{
 			System.err.print("restart program, error handling not yet implemented");
 		}
@@ -98,10 +120,17 @@ public class VOR {
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
 		frame.pack();
-		frame.setSize(400,200);
+		frame.setSize(405,200);
 		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.validate();
+		frame.setLocationRelativeTo(null);
 	}
+	
+	public void kill(){
+		frame.dispose();
+	}
+	
+	
 	
 }
