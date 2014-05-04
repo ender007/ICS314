@@ -27,9 +27,9 @@ public class VOR {
 		
 		//calling calculations.java to access deflection()
 		//calculations calc = new calculations();
-        int deflect = calculations.deflection(bearing, vor);
+        int deflect = Calculate.deflection(bearing, vor);
         
-        int x = calculations.toFrom(bearing, vor, true);
+        int x = Calculate.toFrom(bearing, vor, true);
         
         String tf = "";
         if(x == 0){
