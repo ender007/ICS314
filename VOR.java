@@ -26,7 +26,7 @@ public class VOR {
 		TitledBorder signalTitle;
 		
 		//calling calculations.java to access deflection()
-		calculations calc = new calculations();
+		//calculations calc = new calculations();
         int deflect = calculations.deflection(bearing, vor);
         
         int x = calculations.toFrom(bearing, vor, true);

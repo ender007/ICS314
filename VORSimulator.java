@@ -4,8 +4,6 @@
  * AUTHORS: Myles Enriquez, Anthony Betzina, Joshua Sutherland
  */
 
-import javax.swing.JOptionPane;
-
 import java.util.*;
 
 public class VORSimulator {
@@ -49,10 +47,8 @@ public class VORSimulator {
 			 * VOR() requires 2 params
 			 * rad = radial which will be generated
 			 * fromOrTo = direction of plane ex. TO or FROM
-			 * deflection = how much the needle will deflect ex. -10 which is all to the left, 0 which is center, 10 which is all to the right
-			 * 
-			 * IMPORTANT: Our methods will feed this contructor, everthing above this construtor
-			 * is just for testing.
+			 * deflection = how much the needle will deflect ex. 
+			 * -10 which is all to the left, 0 which is center, 10 which is all to the right
 			 */
 	
 			VOR gui = new VOR(bearing, vor);

@@ -125,7 +125,6 @@ public class calculations {
         if(total > 180){
             total = 360 - total;
         }
-        //System.out.println("Total in To/FROM: "+total);
         if(signal == false){
             return 0;
         }
