@@ -6,7 +6,7 @@ public class calculations {
 	 * Test code for the logic methods
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		//All of our test cases with answers
 		int [][] bearingRadial = new int [][]{
 				{160, 270, 10, -1},
@@ -36,7 +36,7 @@ public class calculations {
 		 * values to the answer values in the array.
 		 */
 		
-		for (int i = 0; i<bearingRadial.length; i++){
+		/*for (int i = 0; i<bearingRadial.length; i++){
 			int deflect = deflection(bearingRadial[i][0], bearingRadial[i][1]);
 			int tf = toFrom(bearingRadial[i][0], bearingRadial[i][1], true);
 			if (bearingRadial[i][2]==deflect && bearingRadial[i][3]==tf){
@@ -45,7 +45,7 @@ public class calculations {
 				System.out.println("Bearing: "+bearingRadial[i][0] +" Radial: "+bearingRadial[i][1]+" Deflection: "+deflect+" TO/FROM: "+tf+ " FAIL");
 			}
 		}
-	}
+	}*/
 	
 	/**
 	 *This method calculates the deflection of the needle on the VOR by calculating the difference
